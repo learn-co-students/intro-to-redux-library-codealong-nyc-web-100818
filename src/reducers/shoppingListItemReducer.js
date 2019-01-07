@@ -1,14 +1,36 @@
-export default function shoppingListItemReducer(
-	state = {
-		items: []
-	},
-	action
-) {
-	switch (action.type) {
-		case 'INCREASE_COUNT':
-			return state.items.concat(state.items.length + 1);
+// export default function shoppingListItemReducer(
+// 	state = {
+// 		items: []
+// 	},
+// 	action
+// ) {
+// 	switch (action.type) {
+// 		case 'INCREASE_COUNT':
+// 			return state.items.concat(state.items.length + 1);
 
-		default:
-			return state;
-	}
+// 		default:
+// 			return state;
+// 	}
+// }
+export default function shoppingListItemReducer(
+  state = {
+    items: []
+  },
+  action
+) {
+  console.log(action);
+  switch (action.type) {
+		case "INCREASE_COUNT":
+			console.log(state)
+      console.log("Current state.items length %s", state.items.length);
+      console.log("Updating state.items length to %s", state.items.length + 1);
+      return Object.assign({}, state, {
+        items: state.items.concat(state.items.length + 1)
+      });
+
+    default:
+			console.log("Initial state.items length: %s", state.items.length);
+			console.log(state)
+      return state;
+  }
 }
